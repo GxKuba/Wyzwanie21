@@ -1,59 +1,62 @@
-﻿/*
-//Tablice
-int[] points= new int[5];
-string[] daysOfWeeks= new string[7];
+﻿using Wyzwanie21;
 
-daysOfWeeks[0] = "poniedzialek";
-daysOfWeeks[1] = "wtorek";
-daysOfWeeks[2] = "sroda";
-daysOfWeeks[3] = "czwartek";
-daysOfWeeks[4] = "piatek";
-daysOfWeeks[5] = "sobota";
-daysOfWeeks[6] = "niedziela";
 
-//inny sposob na tablice
-string[] daysOfWeeks2= {"pon","wt"};
-Console.WriteLine(daysOfWeeks2[1]);
+User user1 = new User("Damian", "pasik");
+user1.AddScore(5);
+user1.AddScore(10);
+user1.AddScore(8);
+var result = user1.Result;
 
-for(int i = 0; i < daysOfWeeks.Length; i++)
+
+//Dzien 6 zadanie domowe
+
+Employee emp1 = new Employee("Andrzej", "Krzeslo",20);
+Employee emp2 = new Employee("Henryk", "Taboret",30);
+Employee emp3 = new Employee("Leonard", "Kalendarz",26);
+Random rnd = new Random();
+for (int i = 0;i < 5; i++)
 {
-    Console.WriteLine(daysOfWeeks[i]);
-}
-Console.WriteLine(" ");
-foreach(var day in daysOfWeeks)
-{
-    Console.WriteLine(day);
+    emp1.AddPoint(rnd.Next(10));
+    emp2.AddPoint(rnd.Next(10));
+    emp3.AddPoint(rnd.Next(10));
 }
 
-//Listy (tablice na sterydach)
-List<string> daysOfWeek3= new List<string>();
-foreach(string day in daysOfWeeks)
+var result1 = emp1.Result;
+var result2 = emp2.Result;
+var result3 = emp3.Result;
+
+if (result1 >= result2 && result1 >= result3)
 {
-    daysOfWeek3.Add(day);
-} 
-
-for(int i = 0;i < daysOfWeek3.Count; i++)
+    Console.WriteLine($"{emp1.Name} {emp1.Surname} Lat {emp1.Age} Zdobył {emp1.Result} punktów");
+}
+if (result2 >= result1 && result2 >= result3)
 {
-    Console.WriteLine(daysOfWeek3[i]);
-}*/
-
-int number = 1564161;
-string numberInString= number.ToString();
-char[] letters = numberInString.ToArray();
-
-char[] numbersToCheck = { '0', '1', '2', '3','4','5','6','7','8','9' };
-int[] result= {0,0,0,0,0,0,0,0,0,0};
-
-for(int i = 0; i < 10; i++)
+    Console.WriteLine($"{emp2.Name} {emp2.Surname} Lat {emp2.Age} Zdobył {emp2.Result} punktów");
+}
+if (result3 >= result2 && result3 >= result1)
 {
-    for (int j = 0; j < letters.Length; j++) 
-        if (numbersToCheck[i] == letters[j])
-        {
-            result[i]++;
-        }
+    Console.WriteLine($"{emp3.Name} {emp3.Surname} Lat {emp3.Age} Zdobył {emp3.Result} punktów");
 }
 
-for (int i = 0;i<10; i++)
+int max = result1;
+if (result2 > max)
 {
-    Console.WriteLine(i+" => " + result[i]);
+    max = result2;
+}
+if (result3 > max)
+{
+    max = result3;
+}
+
+if (result1 == max)
+{
+    Console.WriteLine($"{emp1.Name} {emp1.Surname} Lat {emp1.Age} Zdobył {emp1.Result} punktów");
+}
+else if(result2 == max)
+{
+    Console.WriteLine($"{emp2.Name} {emp2.Surname} Lat {emp2.Age} Zdobył {emp2.Result} punktów");
+}
+else
+{
+    Console.WriteLine($"{emp3.Name} {emp3.Surname} Lat {emp3.Age} Zdobył {emp3.Result} punktów");
 }
