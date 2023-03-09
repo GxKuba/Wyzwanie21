@@ -38,7 +38,7 @@ if (result3 >= result2 && result3 >= result1)
     Console.WriteLine($"{emp3.Name} {emp3.Surname} Lat {emp3.Age} Zdobył {emp3.Result} punktów");
 }
 
-int max = result1;
+int max = 0;
 if (result2 > max)
 {
     max = result2;
@@ -60,3 +60,26 @@ else
 {
     Console.WriteLine($"{emp3.Name} {emp3.Surname} Lat {emp3.Age} Zdobył {emp3.Result} punktów");
 }
+
+//Zrobic ladniej z pomoca Adama
+
+List<Employee> users = new List<Employee>()
+{
+    emp1,emp2,emp3
+};
+
+int maxResult = 0;
+Employee empMax = null;
+
+foreach(var user in users)
+{
+    if (user.Result > maxResult)
+    {
+        empMax = user;
+        maxResult = user.Result;
+    }
+}
+
+Console.WriteLine(emp1.Result+" "+ emp2.Result+" "+emp3.Result);
+Console.WriteLine("SPOSOB ADAMA");
+Console.WriteLine($"{empMax.Name} {empMax.Surname} Lat {empMax.Age} Zdobył {empMax.Result} punktów");
