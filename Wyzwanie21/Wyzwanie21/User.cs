@@ -9,6 +9,11 @@ namespace Wyzwanie21
 
         List<int> score= new List<int>();
 
+        public User(string login) 
+        {
+            this.Login= login;
+        }
+
         public User(string login, string password)
         {
             this.Login = login;
@@ -32,6 +37,7 @@ namespace Wyzwanie21
         public void AddScore(int number)
         {
             this.score.Add(number);
+            
         }
     }
     
