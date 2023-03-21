@@ -16,6 +16,7 @@ namespace Wyzwanie21
         public int Age { get; private set; }
 
         List<int> points = new List<int>();
+
         public void AddPoint(int point)
         {
             this.points.Add(point);

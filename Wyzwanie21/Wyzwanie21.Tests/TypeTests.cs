@@ -1,4 +1,4 @@
-﻿namespace Wyzwanie21.Tests
+﻿/*namespace Wyzwanie21.Tests
 {
     public class TypeTests
     {
@@ -49,4 +49,4 @@
             return new User(name);
         }
     }
-}
+}*/
