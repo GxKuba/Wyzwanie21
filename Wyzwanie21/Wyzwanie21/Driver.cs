@@ -1,4 +1,6 @@
 ﻿
+using System.Diagnostics;
+
 namespace Wyzwanie21
 {
     public class Driver
@@ -46,7 +48,7 @@ namespace Wyzwanie21
 
         public void AddGrade(double grade)
         {
-            float gradeAsFloat = (float)gradeAsFloat;
+            float gradeAsFloat = (float)grade;
             this.AddGrade(gradeAsFloat);
         }
 
@@ -62,20 +64,76 @@ namespace Wyzwanie21
             stats.Average = 0;
             stats.Max = float.MinValue;
             stats.Min= float.MaxValue;
-
+            
             foreach (var grade in this.grades)
             {
+                //break
+                //continue - pomija dalsza czesc petli
+                //goto - przeskok do konkretnego miejsca w kodzie (nie uzywac)
+
                 stats.Max = Math.Max(stats.Max, grade);
                 stats.Min = Math.Min(stats.Min, grade);
                 stats.Average+= grade;
             }
-            stats.Average/= this.grades.Count;
+            
+            stats.Average /= this.grades.Count;
+            return stats;
+        }
 
+        public Stats GetStatsWithDoWhile()
+        {
+            var stats = new Stats();
+            stats.Average = 0;
+            stats.Max = float.MinValue;
+            stats.Min = float.MaxValue;
+            int index = 0;
+            do
+            {
+                stats.Max = Math.Max(stats.Max, this.grades[index]);
+                stats.Min = Math.Min(stats.Min, this.grades[index]);
+                stats.Average += grades[index];
+                index++;
+            } while (index < this.grades.Count);
+            stats.Average /= this.grades.Count;
+            return stats;
+        }
+
+        public Stats GetStatsWithWhile()
+        {
+            var stats = new Stats();
+            stats.Average = 0;
+            stats.Max = float.MinValue;
+            stats.Min = float.MaxValue;
+            int index = 0;
+            while (index < this.grades.Count)
+            {
+                stats.Max = Math.Max(stats.Max, this.grades[index]);
+                stats.Min = Math.Min(stats.Min, this.grades[index]);
+                stats.Average += grades[index];
+                index++;
+            } ;
+            stats.Average /= this.grades.Count;
+            return stats;
+        }
+
+        public Stats GetStatsWithFor()
+        {
+            var stats = new Stats();
+            stats.Average = 0;
+            stats.Max = float.MinValue;
+            stats.Min = float.MaxValue;
+            
+            for(int i=0; i < this.grades.Count; i++)
+            {
+                stats.Max = Math.Max(stats.Max, this.grades[i]);
+                stats.Min = Math.Min(stats.Min, this.grades[i]);
+                stats.Average += grades[i];
+                
+            };
+            stats.Average /= this.grades.Count;
             return stats;
         }
     }
 }
 
-/* Stworzyc kilka metod do przjecia ocen w roznych formatach
- * double, long, ulong, bool
- */
+

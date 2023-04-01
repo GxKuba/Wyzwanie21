@@ -12,6 +12,9 @@ Console.WriteLine($"Max: {stats.Max}");
 Console.WriteLine($"Min: {stats.Min}");
 Console.WriteLine($"Average: {stats.Average:N2}");
 
+var statsFor = driver1.GetStatsWithFor();
+var statsDoWhile = driver1.GetStatsWithDoWhile();
+var statsWhile = driver1.GetStatsWithWhile();
 
 
 /*void SetSth(out  Stats stats)
