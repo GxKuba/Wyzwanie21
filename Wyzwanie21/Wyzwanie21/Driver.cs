@@ -27,6 +27,19 @@ namespace Wyzwanie21
             }
         }
 
+        public void AddGrade(char grade)
+        {
+            switch(grade) 
+            {
+                case 'A': case 'a': this.AddGrade(100); break;
+                case 'B': case 'b': this.AddGrade(80); break;
+                case 'C': case 'c': this.AddGrade(60); break;
+                case 'D': case 'd': this.AddGrade(40); break;
+                case 'E': case 'e': this.AddGrade(20); break;
+                default: Console.WriteLine("Wrong letter"); break;
+            }
+        }
+
         public void AddGrade(string grade)
         {
             if(float.TryParse(grade,out float result))
@@ -37,19 +50,9 @@ namespace Wyzwanie21
             {
                 Console.WriteLine("String is not float");
             }
+            
         }
 
-        public void AddGrade(double grade)
-        {
-            float gradeAsFloat = (float)grade;
-            this.AddGrade(gradeAsFloat);
-        }
-
-        public void AddGrade(int grade)
-        {
-            float gradeAsFloat = grade;
-            this.AddGrade(gradeAsFloat);
-        }
 
         public Stats GetStats()
         {
@@ -66,14 +69,18 @@ namespace Wyzwanie21
             }
             
             stats.Average /= this.grades.Count;
+
+            switch (stats.Average)
+            {
+                case var average when average > 80: stats.AverageLetter = 'A'; break;
+                case var average when average > 60: stats.AverageLetter = 'B'; break;
+                case var average when average > 40: stats.AverageLetter = 'C'; break;
+                case var average when average > 20: stats.AverageLetter = 'D'; break;
+                default: stats.AverageLetter = 'E'; break;
+            }
+
             return stats;
         }
-
-        
-
-        
-
-        
     }
 }
 
