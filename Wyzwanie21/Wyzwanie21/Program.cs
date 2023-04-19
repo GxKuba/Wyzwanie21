@@ -13,15 +13,22 @@ while (true)
     {
         break;
     }
-
-    if(char.TryParse(input, out char charInput))
+    try
     {
-        driver1.AddGrade(charInput);
+        if (char.TryParse(input, out char charInput))
+        {
+            driver1.AddGrade(charInput);
+        }
+        else
+        {
+            driver1.AddGrade(input);
+        }
     }
-    else
+    catch(Exception e)
     {
-        driver1.AddGrade(input);
+        Console.WriteLine($"Exception catch: {e.Message}");
     }
+    
 
 }
 

@@ -5,12 +5,18 @@ namespace Wyzwanie21
 {
     public class Driver
     {
+        private readonly char sex = 'M';
+        //readonly nie mozna zmieniac w kodzie jedynie mozna przypisac w konstruktorze albo na samym poczatku definiowanie
+
+        private const char lettershirt = 'F';
+
         private List<float> grades= new List<float>();
 
         public Driver(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
+            //this.sex = 'K';
         }
 
         public string Name { get; private set; }
@@ -23,7 +29,8 @@ namespace Wyzwanie21
             }
             else
             {
-                Console.WriteLine("Invalid grade value");
+                throw new Exception("Invalid grade value");
+                //Console.WriteLine("Invalid grade value");
             }
         }
 
@@ -36,7 +43,7 @@ namespace Wyzwanie21
                 case 'C': case 'c': this.AddGrade(60); break;
                 case 'D': case 'd': this.AddGrade(40); break;
                 case 'E': case 'e': this.AddGrade(20); break;
-                default: Console.WriteLine("Wrong letter"); break;
+                default: throw new Exception("Wrong letter"); //Nie musi byc break na koncu (throw automatycznie przerywa)
             }
         }
 
@@ -48,7 +55,8 @@ namespace Wyzwanie21
             }
             else
             {
-                Console.WriteLine("String is not float");
+                throw new Exception("String is not float");
+                //Console.WriteLine("String is not float");
             }
             
         }
