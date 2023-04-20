@@ -1,26 +1,13 @@
-﻿
-using System.Diagnostics;
-
-namespace Wyzwanie21
+﻿namespace Wyzwanie21
 {
-    public class Driver
+    public class Driver : Person
     {
-        private readonly char sex = 'M';
-        //readonly nie mozna zmieniac w kodzie jedynie mozna przypisac w konstruktorze albo na samym poczatku definiowanie
-
-        private const char lettershirt = 'F';
-
         private List<float> grades= new List<float>();
 
-        public Driver(string name, string surname)
-        {
-            this.Name = name;
-            this.Surname = surname;
-            //this.sex = 'K';
-        }
-
-        public string Name { get; private set; }
-        public string Surname { get;private set; }
+        public Driver(string name, string surname, char sex)
+            : base(name, surname, sex) { }
+        
+        
         public void AddGrade(float grade)
         {
             if(grade>=0 && grade<=100)
@@ -30,7 +17,6 @@ namespace Wyzwanie21
             else
             {
                 throw new Exception("Invalid grade value");
-                //Console.WriteLine("Invalid grade value");
             }
         }
 
@@ -43,7 +29,7 @@ namespace Wyzwanie21
                 case 'C': case 'c': this.AddGrade(60); break;
                 case 'D': case 'd': this.AddGrade(40); break;
                 case 'E': case 'e': this.AddGrade(20); break;
-                default: throw new Exception("Wrong letter"); //Nie musi byc break na koncu (throw automatycznie przerywa)
+                default: throw new Exception("Wrong letter");
             }
         }
 
@@ -53,12 +39,14 @@ namespace Wyzwanie21
             {
                 this.AddGrade(result);
             }
+            else if(char.TryParse(grade, out char charResult))
+            {
+                this.AddGrade(charResult);
+            }
             else
             {
                 throw new Exception("String is not float");
-                //Console.WriteLine("String is not float");
             }
-            
         }
 
 
