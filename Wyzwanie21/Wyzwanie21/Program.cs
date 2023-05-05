@@ -4,7 +4,7 @@ Console.WriteLine("Witamy w Programie XYZ do oceny pracownikow");
 Console.WriteLine("===========================================");
 Console.WriteLine();
 
-var driver1 = new Driver("Kuba", "Tak",'M');
+var driver1 = new Driver("Kuba", "Tak");
 
 while (true)
 {
@@ -30,5 +30,3 @@ var stats = driver1.GetStats();
 Console.WriteLine($"AVG: {stats.Average:N2}");
 Console.WriteLine($"MIN: {stats.Min}");
 Console.WriteLine($"MAX: {stats.Max}");
-
-//Napisac testy 
