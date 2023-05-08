@@ -1,9 +1,4 @@
-﻿using System.ComponentModel.Design;
-using System.Diagnostics;
-using System.Diagnostics.Metrics;
-using System.Reflection;
-
-namespace Wyzwanie21
+﻿namespace Wyzwanie21
 {
     public class EmployeeInFile : EmployeeBase
     {
@@ -107,28 +102,9 @@ namespace Wyzwanie21
         private Stats CountStats(List<float> grades)
         {
             var stats = new Stats();
-            stats.Average = 0;
-            stats.Min = float.MaxValue;
-            stats.Max = float.MinValue;
-
             foreach (var grade in grades)
             {
-                if (grade >= 0)
-                {
-                    stats.Max = Math.Max(stats.Max, grade);
-                    stats.Min = Math.Min(stats.Min, grade);
-                    stats.Average += grade;
-                }
-                stats.Average /= grades.Count;
-            }
-
-            switch (stats.Average)
-            {
-                case var average when average > 80: stats.AverageLetter = 'A'; break;
-                case var average when average > 60: stats.AverageLetter = 'B'; break;
-                case var average when average > 40: stats.AverageLetter = 'C'; break;
-                case var average when average > 20: stats.AverageLetter = 'D'; break;
-                default: stats.AverageLetter = 'E'; break;
+                stats.AddGrade(grade);
             }
             return stats;
         }
