@@ -1,4 +1,6 @@
-﻿namespace Wyzwanie21
+﻿using static Wyzwanie21.EmployeeBase;
+
+namespace Wyzwanie21
 {
     public interface IEmployee
     {
@@ -10,6 +12,8 @@
         void AddGrade(float grade);
         void AddGrade(double grade);
         void AddGrade(int grade);
+        event GradeAddedDelegate GradeAdded;
+        
 
     }
 

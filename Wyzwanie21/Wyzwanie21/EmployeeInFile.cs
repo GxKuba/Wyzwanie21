@@ -5,9 +5,11 @@ using System.Reflection;
 
 namespace Wyzwanie21
 {
-    public class EmployeeInFile : EmplyeeBase
+    public class EmployeeInFile : EmployeeBase
     {
         private const string fileName = "grades.txt";
+
+        public override event GradeAddedDelegate GradeAdded;
 
         public EmployeeInFile(string name, string surname) : base(name, surname){}
 
@@ -49,6 +51,10 @@ namespace Wyzwanie21
                     writer.WriteLine(grade);
                 }
 
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -97,7 +103,7 @@ namespace Wyzwanie21
             return grades;
             
         }
-
+        
         private Stats CountStats(List<float> grades)
         {
             var stats = new Stats();
@@ -113,7 +119,7 @@ namespace Wyzwanie21
                     stats.Min = Math.Min(stats.Min, grade);
                     stats.Average += grade;
                 }
-                stats.Average /= this.grades.Count;
+                stats.Average /= grades.Count;
             }
 
             switch (stats.Average)

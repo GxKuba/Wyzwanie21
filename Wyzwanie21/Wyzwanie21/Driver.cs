@@ -1,4 +1,4 @@
-﻿namespace Wyzwanie21
+﻿/*namespace Wyzwanie21
 {
     public class Driver : IEmployee
     {
@@ -96,6 +96,6 @@
             return stats;
         }
     }
-}
+}*/
 
 

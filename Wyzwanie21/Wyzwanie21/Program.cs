@@ -4,7 +4,13 @@ Console.WriteLine("Witamy w Programie XYZ do oceny pracownikow");
 Console.WriteLine("===========================================");
 Console.WriteLine();
 
-var driver1 = new Driver("Kuba", "Tak");
+var employe = new EmployeeInMemory("Kuba", "Tak");
+employe.GradeAdded += EmployeGradeAdded;
+void EmployeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("New grade has been added");
+}
+
 
 while (true)
 {
@@ -16,7 +22,7 @@ while (true)
     }
     try
     {
-        driver1.AddGrade(input);
+        employe.AddGrade(input);
     }
     catch(Exception e)
     {
@@ -26,7 +32,7 @@ while (true)
 
 }
 
-var stats = driver1.GetStats();
+var stats = employe.GetStats();
 Console.WriteLine($"AVG: {stats.Average:N2}");
 Console.WriteLine($"MIN: {stats.Min}");
 Console.WriteLine($"MAX: {stats.Max}");
